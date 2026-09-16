@@ -31,9 +31,6 @@ You can find the results and figures here: https://fileshot.io/f/727e1ccf7f79e0f
 pip install -r requirements.txt
 ```
 
-### Individual Subfigures (in `figures/`)
-
-
 ### Model Architecture
 - `SimpleNet` is a fully connected network for image classification.
 - Input layer: flattened image tensor of shape `(input_channels * input_size * input_size,)`.

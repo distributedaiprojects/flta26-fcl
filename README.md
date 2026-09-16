@@ -48,47 +48,6 @@ pip install -r requirements.txt
 
 The model used in our experiments is a simple fully connected neural network, `SimpleNet`. For each input image, the network first flattens the tensor and then applies a single hidden layer with 128 units and ReLU activation. The final layer is a linear classification layer that outputs logits for the target classes. For Fashion-MNIST, the input is treated as a single-channel \(28 x 28\) image; for CIFAR-10, the input is treated as a three-channel \(32 x 32\) image. Training uses standard cross-entropy loss, stochastic gradient descent with a learning rate of 0.001, and a batch size of 32. This compact architecture was chosen to match the federated continual learning setup and focus evaluation on the impact of the proposed knowledge-distillation and personalized teacher mechanisms rather than on model capacity.
 
-#### IEEE LaTeX table
-
-The following table can be copied into an IEEEtran manuscript. The parameter count includes trainable weights and biases.
-
-```latex
-% Requires: \usepackage{array,tabularx}
-\begin{table}[htbp]
-\caption{Model architecture and training parameters.}
-\begin{center}
-\begin{tabularx}{\columnwidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
-\hline
-{\bfseries Model} & \multicolumn{3}{|c|}{\textbf{Architecture and Parameters}} \\
-\cline{2-4}
-{\bfseries Component} & \textbf{\textit{Input}} & \textbf{\textit{Output}} & \textbf{\textit{Trainable parameters}} \\
-\hline
-Flatten & $1\times28\times28$ or $3\times32\times32$ & 784 or 3,072 & 0 \\
-\hline
-Linear 1 & 784 or 3,072 & 128 & 101,760 or 393,344 \\
-\hline
-ReLU & 128 & 128 & 0 \\
-\hline
-Linear 2 & 128 & 10 & 1,290 \\
-\hline
-{\bfseries Total} & \multicolumn{2}{|c|}{\textbf{Fashion-MNIST / CIFAR-10}} & \textbf{101,770 / 394,634} \\
-\hline
-Loss & \multicolumn{3}{|c|}{Cross-entropy} \\
-\hline
-Optimizer & \multicolumn{3}{|c|}{SGD, learning rate $0.001$} \\
-\hline
-Training & \multicolumn{3}{|c|}{Batch size 32; one local epoch} \\
-\hline
-KD parameters & \multicolumn{3}{|c|}{$\lambda_{\mathrm{LL}}=0.9$, $\lambda_{\mathrm{GL}}=0.1$, $T=1.5$, $\lambda_{\mathrm{KD}}=0.05$} \\
-\hline
-FedProx / cFed & \multicolumn{3}{|c|}{$\mu\in\{\mathrm{disabled},0.01\}$; $\alpha=0.1$, $T_{\mathrm{cFed}}=2.0$} \\
-\end{tabularx}
-\par\noindent\parbox{\columnwidth}{\footnotesize Parameters include weights and biases; the first value is for Fashion-MNIST and the second for CIFAR-10.}
-\label{tab:model-architecture}
-\end{center}
-\end{table}
-```
-
 ### Clustering and teacher selection
 - Client clustering is performed on client class-distribution probability vectors using `KMeans`.
 - The optimal number of clusters `k` is chosen by an elbow method over `k_min=1..k_max`.

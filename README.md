@@ -72,3 +72,9 @@ The model used in our experiments is a simple fully connected neural network, `S
 ## License
 
 This project is for research and educational purposes.
+
+## Cite us
+M. Angelova, V. Boeva, S. Abghari, S. Ickin, X. Lan. Federated Continual Learning based on Knowledge Distillation with Personalized Local and Global Teachers, The 4th IEEE International Conference on Federated Learning Technologies and Applications, FLTA 2026 (27-30 October 2026, Paris, France).
+
+## Email me
+mangelova@mail.com

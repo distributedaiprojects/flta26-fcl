@@ -28,6 +28,7 @@ You can find the results and figures here: https://fileshot.io/f/727e1ccf7f79e0f
 ### Installation
 
 ```bash
+# Python version: 3.10
 pip install -r requirements.txt
 ```
 
